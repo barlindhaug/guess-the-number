@@ -3,3 +3,4 @@
 
 (enable-console-print!)
 
+(def container (.getElementById js/document "main"))
