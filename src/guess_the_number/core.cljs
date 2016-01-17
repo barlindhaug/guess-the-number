@@ -5,3 +5,7 @@
 (enable-console-print!)
 
 (def container (.getElementById js/document "main"))
+
+(q/defcomponent Game []
+  (dom/div {}
+           (dom/p {} "Which number between 1 and 30?")))
