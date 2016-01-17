@@ -7,6 +7,12 @@
 (defonce app-state (atom
                     {:number (rand-int 31)}))
 
+(defn make-guess [guess]
+  (println (str "Guessing: " guess))
+  (swap! app-state (fn [state]
+                     {:number (:number state)
+                      :guess guess})))
+
 (def container (.getElementById js/document "main"))
 
 (defn enter-key? [evt]
@@ -17,7 +23,7 @@
        :placeholder "Guess and press enter"
        :onKeyDown (fn [event]
                     (when (enter-key? event)
-                      (println (.-value (.-target event)))))}))
+                      (make-guess (int (.-value (.-target event))))))}))
 
 (q/defcomponent Game [state]
   (dom/div {}
