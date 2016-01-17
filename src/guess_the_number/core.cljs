@@ -1,5 +1,6 @@
 (ns guess-the-number.core
-  (:require ))
+  (:require [quiescent.core :as q]
+            [quiescent.dom :as dom]))
 
 (enable-console-print!)
 
