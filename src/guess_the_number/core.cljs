@@ -9,3 +9,8 @@
 (q/defcomponent Game []
   (dom/div {}
            (dom/p {} "Which number between 1 and 30?")))
+
+(defn render-game [container]
+  (q/render (Game) container))
+
+(render-game container)
