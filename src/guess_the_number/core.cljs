@@ -4,7 +4,8 @@
 
 (enable-console-print!)
 
-(defonce app-state (atom {}))
+(defonce app-state (atom
+                    {:number (rand-int 31)}))
 
 (def container (.getElementById js/document "main"))
 
