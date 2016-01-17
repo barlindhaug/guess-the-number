@@ -4,6 +4,8 @@
 
 (enable-console-print!)
 
+(defonce app-state (atom {}))
+
 (def container (.getElementById js/document "main"))
 
 (defn enter-key? [evt]
@@ -16,12 +18,16 @@
                     (when (enter-key? event)
                       (println (.-value (.-target event)))))}))
 
-(q/defcomponent Game []
+(q/defcomponent Game [state]
   (dom/div {}
            (dom/p {} "Which number between 1 and 30?")
            (Guess)))
 
-(defn render-game [container]
-  (q/render (Game) container))
+(defn render-game [container state]
+  (q/render (Game state) container))
 
-(render-game container)
+(render-game container @app-state)
+
+(add-watch app-state :watch
+           (fn [_ _ _ new-state]
+             (render-game container new-state)))
